@@ -1,0 +1,18 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 2em;
+}
+
+.header {
+
+  &__authenticated {
+
+    &--item {
+      margin: 10px;
+    }
+  }
+}

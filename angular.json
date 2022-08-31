@@ -1,0 +1,531 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "src/projects",
+  "projects": {
+    "auth": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "src/projects/auth",
+      "sourceRoot": "src/projects/auth/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "src/dist/auth",
+            "index": "src/projects/auth/src/index.html",
+            "main": "src/projects/auth/src/main.ts",
+            "polyfills": "src/projects/auth/src/polyfills.ts",
+            "tsConfig": "src/projects/auth/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/projects/auth/src/favicon.ico",
+              "src/projects/auth/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/projects/auth/src/styles.scss"
+            ],
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "classnames",
+              "supertokens-auth-react",
+              "supertokens-auth-react/recipe/session",
+              "supertokens-auth-react/recipe/thirdpartyemailpassword",
+              "supertokens-web-js",
+              "supertokens-web-js/recipe/session",
+              "prop-types"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/projects/auth/src/environments/environment.ts",
+                  "with": "src/projects/auth/src/environments/environment.production.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4200
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "auth:build:production"
+            },
+            "development": {
+              "browserTarget": "auth:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "auth:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/projects/auth/src/test.ts",
+            "polyfills": "src/projects/auth/src/polyfills.ts",
+            "tsConfig": "src/projects/auth/tsconfig.spec.json",
+            "karmaConfig": "src/projects/auth/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/projects/auth/src/favicon.ico",
+              "src/projects/auth/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/projects/auth/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "app1": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "src/projects/app1",
+      "sourceRoot": "src/projects/app1/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/app1",
+            "index": "src/projects/app1/src/index.html",
+            "main": "src/projects/app1/src/main.ts",
+            "polyfills": "src/projects/app1/src/polyfills.ts",
+            "tsConfig": "src/projects/app1/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/projects/app1/src/favicon.ico",
+              "src/projects/app1/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/projects/app1/src/styles.scss"
+            ],
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "supertokens-web-js",
+              "supertokens-web-js/recipe/session"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/projects/app1/src/environments/environment.ts",
+                  "with": "src/projects/app1/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4201
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app1:build:production"
+            },
+            "development": {
+              "browserTarget": "app1:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "app1:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/projects/app1/src/test.ts",
+            "polyfills": "src/projects/app1/src/polyfills.ts",
+            "tsConfig": "src/projects/app1/tsconfig.spec.json",
+            "karmaConfig": "src/projects/app1/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/projects/app1/src/favicon.ico",
+              "src/projects/app1/src/assets"
+            ],
+            "styles": [
+              "src/projects/app1/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "app2": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "src/projects/app2",
+      "sourceRoot": "src/projects/app2/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/app2",
+            "index": "src/projects/app2/src/index.html",
+            "main": "src/projects/app2/src/main.ts",
+            "polyfills": "src/projects/app2/src/polyfills.ts",
+            "tsConfig": "src/projects/app2/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/projects/app2/src/favicon.ico",
+              "src/projects/app2/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/projects/app2/src/styles.scss"
+            ],
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "supertokens-web-js",
+              "supertokens-web-js/recipe/session"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/projects/app2/src/environments/environment.ts",
+                  "with": "src/projects/app2/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4202
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app2:build:production"
+            },
+            "development": {
+              "browserTarget": "app2:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "app2:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/projects/app2/src/test.ts",
+            "polyfills": "src/projects/app2/src/polyfills.ts",
+            "tsConfig": "src/projects/app2/tsconfig.spec.json",
+            "karmaConfig": "src/projects/app2/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/projects/app2/src/favicon.ico",
+              "src/projects/app2/src/assets"
+            ],
+            "styles": [
+              "src/projects/app2/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "app3": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "",
+      "sourceRoot": "src/projects/app3/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "src/dist/app3",
+            "index": "src/projects/app3/src/index.html",
+            "main": "src/projects/app3/src/main.ts",
+            "polyfills": "src/projects/app3/src/polyfills.ts",
+            "tsConfig": "src/projects/app3/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/projects/app3/src/favicon.ico",
+              "src/projects/app3/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/projects/app3/src/styles.scss"
+            ],
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "supertokens-web-js",
+              "supertokens-web-js/recipe/session"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/projects/app3/src/environments/environment.ts",
+                  "with": "src/projects/app3/src/environments/environment.production.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "staging": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/projects/app3/src/environments/environment.ts",
+                  "with": "src/projects/app3/src/environments/environment.staging.ts"
+                }
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4203
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app3:build:production"
+            },
+            "staging": {
+              "browserTarget": "app3:build:production"
+            },
+            "development": {
+              "browserTarget": "app3:build:development",
+              "allowedHosts": [
+                ".localhost"
+              ]
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "app3:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/projects/app3/src/test.ts",
+            "polyfills": "src/projects/app3/src/polyfills.ts",
+            "tsConfig": "src/projects/app3/tsconfig.spec.json",
+            "karmaConfig": "src/projects/app3/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/projects/app3/src/favicon.ico",
+              "src/projects/app3/srcassets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/projects/app3/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "fx-app-shell": {
+      "projectType": "library",
+      "root": "src/projects/fx-app-shell",
+      "sourceRoot": "src/projects/fx-app-shell/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "src/projects/fx-app-shell/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "src/projects/fx-app-shell/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "src/projects/fx-app-shell/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/projects/fx-app-shell/src/test.ts",
+            "tsConfig": "src/projects/fx-app-shell/tsconfig.spec.json",
+            "karmaConfig": "src/projects/fx-app-shell/karma.conf.js"
+          }
+        }
+      }
+    },
+    "fx-common-lib": {
+      "projectType": "library",
+      "root": "src/projects/fx-common-lib",
+      "sourceRoot": "src/projects/fx-common-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "src/projects/fx-common-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "src/projects/fx-common-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "src/projects/fx-common-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/projects/fx-common-lib/src/test.ts",
+            "tsConfig": "src/projects/fx-common-lib/tsconfig.spec.json",
+            "karmaConfig": "src/projects/fx-common-lib/karma.conf.js"
+          }
+        }
+      }
+    },
+  }
+}

@@ -1,0 +1,14 @@
+<mat-toolbar *ngIf="notSigninPage">
+    <span>
+      <span>SuperTokens SSO Demo</span>
+    </span>
+  <span *ngIf="isAuthenticated$ | async" class="header__authenticated">
+    <span class="header__authenticated--item">Welcome!</span>
+    <span class="header__authenticated--item">
+      <lib-sign-out-button color="primary">Sign Out</lib-sign-out-button>
+    </span>
+  </span>
+  <span *ngIf="notAuthenticated$ | async">
+    <lib-sign-in-button mat-raised-button color="primary">Sign In</lib-sign-in-button>
+  </span>
+</mat-toolbar>
